@@ -15,7 +15,6 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,4 +34,53 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: '1fr 1fr 1fr';
+  margin: '0 auto';
+  width: "500px";
+}
+
+.temple_wallet {
+  padding-right: 50px;
+  display: block;
+  float: right
+}
+
+.connexion_button {
+float: right;
+padding-left: 50px;
+padding-right: 10px;
+}
+
+.user_info {
+  float: right;
+  padding-right: 50px;
+}
+
+.center {
+  text-align: center;
+}
+
+.storage_info {
+  display: block;
+  float: left;
+  padding-left: 50px
+}
+
+.instructions {
+  padding-top: 150px;
+  display: block;
+  align-items: center;
+  float: flex;
+}
+
+.instruction_button {
+  padding-top: 10px;
+  margin-left: 10px;
+  align-items: center;
+  display: block;
+  float: center
 }
