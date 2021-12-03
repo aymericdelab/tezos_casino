@@ -107,14 +107,14 @@ function CallContract() {
       <button onClick={() => sendFunds({fundAmount: 0.5})}> Fund 0.5 tez </button>
     </div>
     <div className="instruction_button">
-      <button onClick={() => participate({black_color: true})}> Bet on the Black Color !</button>
-      <button onClick={() => participate({black_color: false})}> Bet on the Red Color !</button>
+      <button onClick={() => participate({black_color: true})}> Bet on the Black Color !</button> &nbsp; &nbsp;
+      <button onClick={() => participate({black_color: false})}> Bet on the Red Color !</button> 
     </div>
   <div className="instruction_button">
   </div>
   <div className="instruction_button">
-      <button onClick={() => drawWinningColor()}> Draw Winner </button>
-      <button onClick={() => claimFunds()}> Claim Your Prize </button>
+      <button onClick={() => drawWinningColor()}> Draw Winner </button> &nbsp; &nbsp;
+      <button onClick={() => claimFunds()}> Claim Your Prize </button> 
   </div>
   <div className="instruction_button">
   </div>
