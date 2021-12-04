@@ -1,46 +1,33 @@
-# Getting Started with Create React App
+# Tezos Casino
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Tezos Casino is an implementation of a smart contract representing a betting game where you can participate, bet on black or red, and win 2x your money if you win. If not, the smart contract keeps the funds. 
 
-## Available Scripts
+The code contains both the smart contract written in Pascaligo and the front-end written in Typescript + React.
 
-In the project directory, you can run:
 
-### `npm start`
+## Smart Contract
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The smart contract has been written in Ligo, which is a high-level language that compiles into Michelson. Several syntaxes are supported for Ligo, here I am using the Pascal like syntax.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The smart contract has been deployed on the Granadanet Testnet and can be found and interacted with here: https://better-call.dev/granadanet/KT1HJm24U7n6S7Wh9vFEdB97MGyQ7DzoM9LY
 
-### `npm test`
+The smart contract dictates the logic of the app. In order to interact with it, there are several entrypoints:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- fund: a function that allows anybody to add funds to the smart contract. This allows the smart contract to have enough liquidity to reimburse players.
 
-### `npm run build`
+- participate: a user can participate in the Casino by sending 1 tez (Tezos Token) to the smart contract and by also specifying a boolean as argument. The boolean represents a color: true for black and false for red. The smart contract then keeps a record of all the different participants and their predictions.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- draw: a function that will draw a random number in order to decide the winning color. Since smart contracts cannot create randomness, I need to simulate randomness by dividing finding a pseudo-random number already present in on the blockchain and using a modulo 2 to determine black or red. The pseudo-random number that we use here is the price of Bitcoin. The price is retrieved using an Oracle (anther smart contract: https://better-call.dev/granadanet/KT1AQuWowr3WKwF69oTGcKaJrMajic3CKwR2/operations)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- claim: once a winning color has been drawned, a user can claim back his funds (x2) if he has won.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Front End
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The front end is a react app written with typescript. 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The app uses the Temple Wallet library and Taquito to :
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- connect to the user's wallet
+- show some of the user's information (address and balance)
+- interact with the smart contract
