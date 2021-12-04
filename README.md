@@ -4,7 +4,7 @@ Tezos Casino is an implementation of a smart contract representing a betting gam
 
 The code contains both the smart contract written in Pascaligo and the front-end written in Typescript + React.
 
-![alt text](https://github.com/aymericdelab/tezos_casino/blob/main/images/app.png)
+![alt text](https://raw.githubusercontent.com/aymericdelab/tezos_casino/main/images/app.png)
 
 ## Smart Contract
 
